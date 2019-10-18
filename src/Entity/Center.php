@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 
 class Center
@@ -29,26 +30,31 @@ class Center
     /** @var Address */
     private $address;
 
-    /** @var ArrayCollection|Sport[] */
-    private $sports;
+    /** @var ArrayCollection|Court[] */
+    private $courts;
 
     public function __construct(
         int $id,
         string $name,
-        string $slug,
         string $description,
         string $email,
         string $phone,
-        Address $address
+        Address $address,
+        ?string $slug = null
     ) {
         $this->id = $id;
         $this->name = $name;
-        $this->slug = $slug;
+        $this->slug = (new Slugify())->slugify($name);
         $this->description = $description;
         $this->email = $email;
         $this->address = $address;
-        $this->sports = new ArrayCollection();
         $this->phone = $phone;
+
+        if ($slug === null) {
+            $this->slug = (new Slugify())->slugify($name);
+        }
+
+        $this->courts = new ArrayCollection();
     }
 
     public function getId(): int
@@ -86,8 +92,11 @@ class Center
         return $this->address;
     }
 
-    public function getSports()
+    /**
+     * @return ArrayCollection|Court[]
+     */
+    public function getCourts()
     {
-        return $this->sports;
+        return $this->courts;
     }
 }

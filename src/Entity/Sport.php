@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use Cocur\Slugify\Slugify;
+
 class Sport
 {
     /** @var int */
@@ -15,10 +17,14 @@ class Sport
     /** @var string */
     private $slug;
 
-    public function __construct(int $id, string $name)
+    public function __construct(int $id, string $name, string $slug)
     {
         $this->id = $id;
         $this->name = $name;
+
+        if ($slug === null) {
+            $this->slug = (new Slugify())->slugify($name);
+        }
     }
 
     public function getId(): int
