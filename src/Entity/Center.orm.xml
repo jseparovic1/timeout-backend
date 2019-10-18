@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                   https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+    <entity name="App\Entity\Center" table="centers">
+        <id name="id" type="bigint"/>
+        <field name="name"/>
+        <field name="slug" unique="true"/>
+        <field name="description"/>
+        <field name="phone"/>
+        <field name="email"/>
+        <one-to-one field="address" target-entity="App\Entity\Address"/>
+        <one-to-many field="sports" target-entity="App\Entity\Sport" mapped-by="centers"/>
+    </entity>
+</doctrine-mapping>

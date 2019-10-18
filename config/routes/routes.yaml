@@ -1,0 +1,6 @@
+controllers:
+    resource: '../src/Action/'
+    type: annotation
+    prefix: '/api'
+    requirements:
+        _format: 'json'
