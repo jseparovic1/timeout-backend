@@ -9,7 +9,7 @@
         <field name="description"/>
         <field name="phone"/>
         <field name="email"/>
-        <one-to-many field="courts" target-entity="App\Entity\Court" mapped-by="center">
+        <one-to-many field="courts" target-entity="App\Entity\Court" mapped-by="center" orphan-removal="true">
             <cascade>
                 <cascade-all/>
             </cascade>

@@ -4,34 +4,22 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManager;
 
-abstract class Repository
+abstract class Repository extends ServiceEntityRepository
 {
-    /** @var EntityRepository */
-    protected $repository;
+    /** @var EntityManager */
+    protected $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager, string $entity)
+    public function __construct(ManagerRegistry $managerRegistry, string $entity)
     {
-        $this->repository = $entityManager->getRepository($entity);
-    }
+        $this->entityManager = $managerRegistry->getManager();
 
-    public function find(string $id): ?object
-    {
-        return $this->repository->find($id);
-    }
+        parent::__construct($managerRegistry, $entity);
 
-    public function findOneBy(array $criteria): ?object
-    {
-        return $this->repository->findOneBy($criteria);
     }
-
-    public function findAll(): array
-    {
-        return $this->repository->findAll();
-    }
-
     public function save(object $entity): void
     {
         $this->entityManager->persist($entity);

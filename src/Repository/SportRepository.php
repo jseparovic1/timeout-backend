@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Sport;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
  * @method Sport|null find(string $id)
@@ -14,8 +14,8 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class SportRepository extends Repository
 {
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($entityManager, Sport::class);
+        parent::__construct($registry, Sport::class);
     }
 }

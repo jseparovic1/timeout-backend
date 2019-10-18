@@ -23,8 +23,10 @@ class Sport
         $this->name = $name;
 
         if ($slug === null) {
-            $this->slug = (new Slugify())->slugify($name);
+            $slug = (new Slugify())->slugify($name);
         }
+
+        $this->slug = $slug;
     }
 
     public function getId(): int

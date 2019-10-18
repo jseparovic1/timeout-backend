@@ -92,6 +92,15 @@ class Center
         return $this->address;
     }
 
+    public function addCourt(Court $court): void
+    {
+        if (!$this->courts->contains($court)) {
+            return;
+        }
+
+        $this->courts->add($court);
+    }
+
     /**
      * @return ArrayCollection|Court[]
      */
