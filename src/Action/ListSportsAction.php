@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Action;
 
-use App\Repository\SportRepository;
+use App\Repository\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,10 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ListSportsAction extends Controller
 {
-    /** @var SportRepository */
+    /** @var SportsRepository */
     private $sportRepository;
 
-    public function __construct(SportRepository $sportRepository)
+    public function __construct(SportsRepository $sportRepository)
     {
         $this->sportRepository = $sportRepository;
     }
