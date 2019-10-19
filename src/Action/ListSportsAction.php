@@ -6,7 +6,6 @@ namespace App\Action;
 
 use App\Repository\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,11 +20,11 @@ class ListSportsAction extends Controller
     }
 
     /**
-     * @Route("/sports", name="api.sports.show", methods={"GET"})
+     * @Route("/sports", name="api.sports.list", methods={"GET"})
      */
     public function __invoke(): Response
     {
-        return new JsonResponse(
+        return $this->json(
             $this->sportRepository->findAll()
         );
     }

@@ -22,6 +22,9 @@ class WorkingHours
     /** @var DateTime */
     private $closed;
 
+    /** @var Center */
+    private $center;
+
     public function __construct(int $day, string $open, string $closed)
     {
         $this->day = $day;
@@ -39,13 +42,18 @@ class WorkingHours
         return $this->day;
     }
 
-    public function getOpen(): DateTime
+    public function getOpen(): string
     {
-        return $this->open;
+        return $this->open->format('H:i');
     }
 
-    public function getClosed(): DateTime
+    public function getClosed(): string
     {
-        return $this->closed;
+        return $this->open->format('H:i');
+    }
+
+    public function associateToCenter(Center $center): void
+    {
+        $this->center = $center;
     }
 }

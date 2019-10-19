@@ -9,5 +9,6 @@
         <field name="day" type="integer"/>
         <field name="open" type="time"/>
         <field name="closed" type="time"/>
+        <many-to-one field="center" target-entity="App\Entity\Center"/>
     </entity>
 </doctrine-mapping>

@@ -7,8 +7,9 @@ namespace App\Entity;
 use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use JsonSerializable;
 
-class Center
+class Center implements JsonSerializable
 {
     /** @var int */
     private $id;
@@ -35,7 +36,7 @@ class Center
     private $courts;
 
     /** @var WorkingHours[]|Collection */
-    private $openingHours;
+    private $workingHours;
 
     public function __construct(
         string $name,
@@ -43,7 +44,7 @@ class Center
         string $email,
         string $phone,
         Address $address,
-        array $openingHours,
+        array $workingHours,
         ?string $slug = null
     ) {
         $this->name = $name;
@@ -51,7 +52,12 @@ class Center
         $this->phone = $phone;
         $this->email = $email;
         $this->address = $address;
-        $this->openingHours = new ArrayCollection($openingHours);
+
+        $this->workingHours = (new ArrayCollection($workingHours))->map(function (WorkingHours $workingHours) {
+            $workingHours->associateToCenter($this);
+
+            return $workingHours;
+        });
 
         if ($slug === null) {
             $slug = (new Slugify())->slugify($name);
@@ -119,6 +125,22 @@ class Center
      */
     public function getOpeningHours(): array
     {
-        return $this->openingHours->toArray();
+        return $this->workingHours->toArray();
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'slug' => $this->getSlug(),
+            'name' => $this->getName(),
+            'description' => $this->getDescription(),
+            'phone' => $this->getPhone(),
+            'email' => $this->getEmail(),
+            'address' => $this->getAddress(),
+            'working_hours' => $this->getOpeningHours(),
+            'facilities' => [],
+            'cover' => 'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg'
+        ];
     }
 }

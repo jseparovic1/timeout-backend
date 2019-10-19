@@ -24,5 +24,10 @@
                 <cascade-persist/>
             </cascade>
         </one-to-one>
+        <one-to-many field="workingHours" target-entity="App\Entity\WorkingHours" mapped-by="center">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
     </entity>
 </doctrine-mapping>
