@@ -44,9 +44,9 @@ class Address
         return $this->city;
     }
 
-    public function getCoordinates(): Coordinates
+    public function getCoordinates(): Coordinate
     {
-        return new Coordinates(
+        return new Coordinate(
             $this->latitude,
             $this->longitude
         );

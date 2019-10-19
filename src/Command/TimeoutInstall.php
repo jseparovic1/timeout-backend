@@ -46,15 +46,15 @@ class TimeoutInstall extends Command
 
         $center = new Center(
             1,
-            'Sportski centar Liotic',
-            'Sportski centar Liotic',
-            'Sportski centar Liotic',
-            'Sportski centar Liotic',
+            'Sportski centar Lipotic',
+            'Sportski centar Lipotic description',
+            'pero@lipotic.com',
+            '+385 91 897 2122',
             new Address(
-                'street',
-                'city',
-                'lat',
-                'long'
+                'Put Petra',
+                'Kaštela',
+                '43.522835',
+                '16.469226'
             ),
             'sportski-centar-lipotic'
         );
@@ -65,7 +65,22 @@ class TimeoutInstall extends Command
                 'Vanjski teren cage',
                 '150-240kn',
                 [
-                    'https://timeout.com/tereni/lipotic/1.jpeg'
+                    'https://epodravina.hr/wp-content/uploads/2019/01/11-1-640x480.jpg',
+                    'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
+                    'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg'
+                ],
+                $center
+            )
+        );
+
+        $center->addCourt(
+            new Court(
+                2,
+                'Unutarnji cage',
+                '160-250kn',
+                [
+                    'https://epodravina.hr/wp-content/uploads/2019/01/11-1-640x480.jpg',
+                    'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
                 ],
                 $center
             )

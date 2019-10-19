@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 use function sprintf;
 
-class Coordinates
+class Coordinate
 {
     /** @var string */
     private $latitude;
