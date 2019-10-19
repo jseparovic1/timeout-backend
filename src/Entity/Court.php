@@ -15,27 +15,35 @@ class Court
     /** @var string */
     private $name;
 
-    /** @var Collection|string[] */
-    private $gallery;
-
     /** @var string */
     private $price;
+
+    /** @var string */
+    private $description;
+
+    /** @var Sport */
+    private $sport;
 
     /** @var Center */
     private $center;
 
+    /** @var Collection|string[] */
+    private $gallery;
+
     public function __construct(
-        int $id,
         string $name,
         string $price,
-        array $pictures,
-        Center $center
+        string $description,
+        Sport $sport,
+        Center $center,
+        ?array $pictures = []
     ) {
-        $this->id = $id;
         $this->name = $name;
         $this->price = $price;
-        $this->gallery = new ArrayCollection($pictures);
+        $this->description = $description;
+        $this->sport = $sport;
         $this->center = $center;
+        $this->gallery = new ArrayCollection($pictures);
     }
 
     public function getId()
@@ -48,16 +56,31 @@ class Court
         return $this->name;
     }
 
+    public function getPrice(): string
+    {
+        return $this->price;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    public function getSport(): Sport
+    {
+        return $this->sport;
+    }
+
+    public function getCenter(): Center
+    {
+        return $this->center;
+    }
+
     /**
      * @return Collection|string[]
      */
     public function getGallery(): Collection
     {
         return $this->gallery;
-    }
-
-    public function getPrice(): string
-    {
-        return $this->price;
     }
 }

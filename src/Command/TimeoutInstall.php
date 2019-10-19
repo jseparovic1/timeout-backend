@@ -4,8 +4,11 @@ namespace App\Command;
 
 use App\Entity\Address;
 use App\Entity\Center;
+use App\Entity\Coordinate;
 use App\Entity\Court;
+use App\Entity\WorkingHours;
 use App\Entity\Sport;
+use App\Repository\CentersRepository;
 use App\Repository\SportsRepository;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -15,11 +18,15 @@ class TimeoutInstall extends Command
     /** @var SportsRepository */
     private $sportRepository;
 
-    public function __construct(SportsRepository $sportRepository)
+    /** @var CentersRepository */
+    private $centersRepository;
+
+    public function __construct(SportsRepository $sportRepository, CentersRepository $centersRepository)
     {
         parent::__construct();
 
         $this->sportRepository = $sportRepository;
+        $this->centersRepository = $centersRepository;
     }
 
     public function configure()
@@ -45,7 +52,6 @@ class TimeoutInstall extends Command
         }
 
         $center = new Center(
-            1,
             'Sportski centar Lipotic',
             'Sportski centar Lipotic description',
             'pero@lipotic.com',
@@ -53,37 +59,60 @@ class TimeoutInstall extends Command
             new Address(
                 'Put Petra',
                 'Kaštela',
-                '43.522835',
-                '16.469226'
+                new Coordinate(
+                    '43.522835',
+                    '16.469226'
+                )
             ),
+            $this->getOpeningHours(),
             'sportski-centar-lipotic'
         );
 
         $center->addCourt(
             new Court(
-                1,
                 'Vanjski teren cage',
                 '150-240kn',
+                'Vanjski description',
+                $sports[0],
+                $center,
                 [
                     'https://epodravina.hr/wp-content/uploads/2019/01/11-1-640x480.jpg',
                     'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
-                    'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg'
+                    'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg',
                 ],
-                $center
             )
         );
 
         $center->addCourt(
             new Court(
-                2,
                 'Unutarnji cage',
                 '160-250kn',
+                'Unutarnji description',
+                $sports[0],
+                $center,
                 [
                     'https://epodravina.hr/wp-content/uploads/2019/01/11-1-640x480.jpg',
                     'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
                 ],
-                $center
-            )
+            ),
         );
+
+        $this->centersRepository->save($center);
+    }
+
+    /**
+     * @return WorkingHours[]
+     */
+    public function getOpeningHours(): array
+    {
+        return [
+            new WorkingHours(1, '09:00', '23:00'),
+            new WorkingHours(2, '09:00', '23:00'),
+            new WorkingHours(3, '09:00', '23:00'),
+            new WorkingHours(4, '09:00', '23:00'),
+            new WorkingHours(5, '09:00', '23:00'),
+            new WorkingHours(6, '09:00', '23:00'),
+            new WorkingHours(7, '09:00', '23:00'),
+        ];
     }
 }

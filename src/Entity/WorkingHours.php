@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use DateTimeImmutable;
+use DateTime;
 
-class OpeningHour
+class WorkingHours
 {
     /** @var int */
     private $id;
@@ -16,17 +16,17 @@ class OpeningHour
      */
     private $day;
 
-    /** @var DateTimeImmutable */
+    /** @var DateTime */
     private $open;
 
-    /** @var DateTimeImmutable */
+    /** @var DateTime */
     private $closed;
 
-    public function __construct(int $day, DateTimeImmutable $open, DateTimeImmutable $closed)
+    public function __construct(int $day, string $open, string $closed)
     {
         $this->day = $day;
-        $this->open = $open;
-        $this->closed = $closed;
+        $this->open = DateTime::createFromFormat('H:i', $open);
+        $this->closed = DateTime::createFromFormat('H:i', $closed);;
     }
 
     public function getId(): int
@@ -39,12 +39,12 @@ class OpeningHour
         return $this->day;
     }
 
-    public function getOpen(): DateTimeImmutable
+    public function getOpen(): DateTime
     {
         return $this->open;
     }
 
-    public function getClosed(): DateTimeImmutable
+    public function getClosed(): DateTime
     {
         return $this->closed;
     }

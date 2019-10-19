@@ -2,13 +2,12 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                    https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
-    <entity name="App\Entity\Address" table="addresses">
+    <entity name="App\Entity\WorkingHours" table="working_hours">
         <id name="id" type="integer">
             <generator/>
         </id>
-        <field name="street"/>
-        <field name="city"/>
-        <field name="latitude"/>
-        <field name="longitude"/>
+        <field name="day" type="integer"/>
+        <field name="open" type="time"/>
+        <field name="closed" type="time"/>
     </entity>
 </doctrine-mapping>

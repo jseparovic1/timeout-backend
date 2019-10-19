@@ -21,12 +21,12 @@ class Address
     /** @var string */
     private $longitude;
 
-    public function __construct(string $street, string $city, string $latitude, string $longitude)
+    public function __construct(string $street, string $city, Coordinate $coordinate)
     {
         $this->street = $street;
         $this->city = $city;
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
+        $this->latitude = $coordinate->getLatitude();
+        $this->longitude = $coordinate->getLatitude();
     }
 
     public function getId(): int

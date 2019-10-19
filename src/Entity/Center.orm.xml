@@ -3,7 +3,9 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                    https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
     <entity name="App\Entity\Center" table="centers">
-        <id name="id" type="bigint"/>
+        <id name="id" type="integer">
+            <generator/>
+        </id>
         <field name="name"/>
         <field name="slug" unique="true"/>
         <field name="description"/>
@@ -11,14 +13,16 @@
         <field name="email"/>
         <one-to-many field="courts" target-entity="App\Entity\Court" mapped-by="center" orphan-removal="true">
             <cascade>
-                <cascade-all/>
+                <cascade-persist/>
             </cascade>
             <order-by>
                 <order-by-field name="name"/>
             </order-by>
         </one-to-many>
         <one-to-one field="address" target-entity="App\Entity\Address">
-            <join-column on-delete="SET NULL"/>
+            <cascade>
+                <cascade-persist/>
+            </cascade>
         </one-to-one>
     </entity>
 </doctrine-mapping>

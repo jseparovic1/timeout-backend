@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Center
 {
@@ -30,29 +31,33 @@ class Center
     /** @var Address */
     private $address;
 
-    /** @var ArrayCollection|Court[] */
+    /** @var Court[]|Collection */
     private $courts;
 
+    /** @var WorkingHours[]|Collection */
+    private $openingHours;
+
     public function __construct(
-        int $id,
         string $name,
         string $description,
         string $email,
         string $phone,
         Address $address,
+        array $openingHours,
         ?string $slug = null
     ) {
-        $this->id = $id;
         $this->name = $name;
-        $this->slug = (new Slugify())->slugify($name);
         $this->description = $description;
+        $this->phone = $phone;
         $this->email = $email;
         $this->address = $address;
-        $this->phone = $phone;
+        $this->openingHours = new ArrayCollection($openingHours);
 
         if ($slug === null) {
-            $this->slug = (new Slugify())->slugify($name);
+            $slug = (new Slugify())->slugify($name);
         }
+
+        $this->slug = $slug;
 
         $this->courts = new ArrayCollection();
     }
@@ -102,10 +107,18 @@ class Center
     }
 
     /**
-     * @return ArrayCollection|Court[]
+     * @return Court[]
      */
     public function getCourts()
     {
-        return $this->courts;
+        return $this->courts->toArray();
+    }
+
+    /**
+     * @return WorkingHours[]
+     */
+    public function getOpeningHours(): array
+    {
+        return $this->openingHours->toArray();
     }
 }
