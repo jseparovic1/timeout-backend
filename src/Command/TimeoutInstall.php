@@ -6,8 +6,8 @@ use App\Entity\Address;
 use App\Entity\Center;
 use App\Entity\Coordinate;
 use App\Entity\Court;
-use App\Entity\WorkingHours;
 use App\Entity\Sport;
+use App\Entity\WorkingHours;
 use App\Repository\CentersRepository;
 use App\Repository\SportsRepository;
 use Symfony\Component\Console\Input\InputInterface;
@@ -39,11 +39,15 @@ class TimeoutInstall extends Command
     {
         $sports = [];
 
-        $sports[] = new Sport(1, 'Cageball', 'cage-ball');
-        $sports[] = new Sport(2, 'Tenis', 'tenis');
-        $sports[] = new Sport(3, 'Stolni tenis', 'stolni-tenis');
-        $sports[] = new Sport(4, 'Košarka', 'kosarka');
-        $sports[] = new Sport(5, 'Nogomet', 'nogomet');
+        $sports[] = new Sport(1, 'Cageball', '/icons/sports/cage-ball.svg', 'cage-ball');
+        $sports[] = new Sport(2, 'Tenis', '/icons/sports/tennis.svg', 'tenis');
+        $sports[] = new Sport(3, 'Stolni tenis', '/icons/sports/table-tennis.svg', 'stolni-tenis');
+        $sports[] = new Sport(4, 'Košarka', '/icons/sports/basketball.svg', 'kosarka');
+        $sports[] = new Sport(5, 'Nogomet', '/icons/sports/football.svg', 'nogomet');
+        $sports[] = new Sport(6, 'Golf', '/icons/sports/golf.svg', 'golf');
+        $sports[] = new Sport(7, 'Kuglanje', '/icons/sports/bowling.svg', 'kuglanje');
+        $sports[] = new Sport(8, 'Biljar', '/icons/sports/billard.svg', 'biljar');
+        $sports[] = new Sport(9, 'Badminton', '/icons/sports/badminton.svg', 'badminton');
 
         foreach ($sports as $sport) {
             $io->writeln(sprintf('Adding sport %s', $sport->getName()));
@@ -80,7 +84,7 @@ class TimeoutInstall extends Command
                     'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
                     'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg',
                 ],
-            )
+                )
         );
 
         $center->addCourt(
@@ -94,8 +98,8 @@ class TimeoutInstall extends Command
                     'https://epodravina.hr/wp-content/uploads/2019/01/11-1-640x480.jpg',
                     'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
                 ],
-            ),
-        );
+                ),
+            );
 
         $this->centersRepository->save($center);
     }

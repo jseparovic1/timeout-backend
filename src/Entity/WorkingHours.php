@@ -49,7 +49,7 @@ class WorkingHours
 
     public function getClosed(): string
     {
-        return $this->open->format('H:i');
+        return $this->closed->format('H:i');
     }
 
     public function associateToCenter(Center $center): void

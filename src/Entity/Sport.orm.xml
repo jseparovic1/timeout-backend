@@ -5,6 +5,7 @@
     <entity name="App\Entity\Sport" table="sports">
         <id name="id" type="integer"/>
         <field name="name"/>
+        <field name="icon"/>
         <field name="slug" unique="true"/>
     </entity>
 </doctrine-mapping>
