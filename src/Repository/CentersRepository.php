@@ -9,9 +9,9 @@ use App\Entity\Sport;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Sport|null find(string $id)
- * @method Sport|null findOneBy(array $criteria)
- * @method Sport[] findAll()
+ * @method Center|null find(string $id)
+ * @method Center|null findOneBy(array $criteria)
+ * @method Center[] findAll()
  */
 class CentersRepository extends Repository
 {

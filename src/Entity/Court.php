@@ -35,14 +35,12 @@ class Court
         string $price,
         string $description,
         Sport $sport,
-        Center $center,
         ?array $pictures = []
     ) {
         $this->name = $name;
         $this->price = $price;
         $this->description = $description;
         $this->sport = $sport;
-        $this->center = $center;
         $this->gallery = new ArrayCollection($pictures);
     }
 
@@ -82,5 +80,10 @@ class Court
     public function getGallery(): Collection
     {
         return $this->gallery;
+    }
+
+    public function associateToCenter(Center $center): void
+    {
+        $this->center = $center;
     }
 }

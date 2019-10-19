@@ -16,6 +16,6 @@ doctrine:
             App:
                 is_bundle: false
                 type: xml
-                dir: '%kernel.project_dir%/src/Entity'
+                dir: '%kernel.project_dir%/src/Mapping'
                 prefix: 'App\Entity'
                 alias: App

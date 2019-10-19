@@ -9,5 +9,6 @@
     <field name="name"/>
     <field name="gallery"/>
     <field name="price"/>
+    <one-to-one field="center" target-entity="App\Entity\Center"/>
 </entity>
 </doctrine-mapping>

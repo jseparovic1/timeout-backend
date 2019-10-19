@@ -7,9 +7,8 @@ namespace App\Entity;
 use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use JsonSerializable;
 
-class Center implements JsonSerializable
+class Center
 {
     /** @var int */
     private $id;
@@ -109,13 +108,15 @@ class Center implements JsonSerializable
             return;
         }
 
+        $court->associateToCenter($this);
+
         $this->courts->add($court);
     }
 
     /**
      * @return Court[]
      */
-    public function getCourts()
+    public function getCourts(): array
     {
         return $this->courts->toArray();
     }
@@ -123,24 +124,13 @@ class Center implements JsonSerializable
     /**
      * @return WorkingHours[]
      */
-    public function getOpeningHours(): array
+    public function getWorkingHours(): array
     {
         return $this->workingHours->toArray();
     }
 
-    public function jsonSerialize()
+    public function getCover(): string
     {
-        return [
-            'id' => $this->getId(),
-            'slug' => $this->getSlug(),
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'phone' => $this->getPhone(),
-            'email' => $this->getEmail(),
-            'address' => $this->getAddress(),
-            'working_hours' => $this->getOpeningHours(),
-            'facilities' => [],
-            'cover' => 'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg'
-        ];
+        return 'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg';
     }
 }
