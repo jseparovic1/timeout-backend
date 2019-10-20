@@ -6,9 +6,6 @@ namespace App\Entity;
 
 class Address
 {
-    /** @var $id */
-    private $id;
-
     /** @var string */
     private $street;
 
@@ -27,11 +24,6 @@ class Address
         $this->city = $city;
         $this->latitude = $coordinate->getLatitude();
         $this->longitude = $coordinate->getLatitude();
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
     }
 
     public function getStreet(): string

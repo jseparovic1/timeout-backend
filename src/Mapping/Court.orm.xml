@@ -7,8 +7,10 @@
         <generator/>
     </id>
     <field name="name"/>
-    <field name="gallery"/>
+    <field name="description"/>
+    <field name="gallery" type="array"/>
     <field name="price"/>
-    <one-to-one field="center" target-entity="App\Entity\Center"/>
+    <many-to-one field="sport" target-entity="App\Entity\Sport"/>
+    <many-to-one field="center" target-entity="App\Entity\Center" inversed-by="center"/>
 </entity>
 </doctrine-mapping>

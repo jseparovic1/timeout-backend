@@ -37,6 +37,10 @@ class Center
     /** @var WorkingHours[]|Collection */
     private $workingHours;
 
+    /**
+     * @param Sport[] $sports
+     * @param WorkingHours[] $workingHours
+     */
     public function __construct(
         string $name,
         string $description,
@@ -63,7 +67,6 @@ class Center
         }
 
         $this->slug = $slug;
-
         $this->courts = new ArrayCollection();
     }
 
@@ -104,7 +107,7 @@ class Center
 
     public function addCourt(Court $court): void
     {
-        if (!$this->courts->contains($court)) {
+        if ($this->courts->contains($court)) {
             return;
         }
 

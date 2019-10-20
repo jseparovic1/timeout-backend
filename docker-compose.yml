@@ -17,7 +17,7 @@ services:
       PHP_IDE_CONFIG: "serverName=Docker"
       COMPOSER_ALLOW_XDEBUG: "true"
   mysql:
-    image: mysql
+    image: mysql:5.7
     command: ["--default-authentication-plugin=mysql_native_password"]
     networks:
       - timeout

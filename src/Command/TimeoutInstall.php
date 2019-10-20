@@ -83,7 +83,7 @@ class TimeoutInstall extends Command
                     'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
                     'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg',
                 ],
-            )
+                )
         );
 
         $center->addCourt(
@@ -96,8 +96,8 @@ class TimeoutInstall extends Command
                     'https://epodravina.hr/wp-content/uploads/2019/01/11-1-640x480.jpg',
                     'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
                 ],
-                ),
-            );
+            ),
+        );
 
         $this->centersRepository->save($center);
     }

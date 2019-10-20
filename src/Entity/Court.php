@@ -64,16 +64,6 @@ class Court
         return $this->description;
     }
 
-    public function getSport(): Sport
-    {
-        return $this->sport;
-    }
-
-    public function getCenter(): Center
-    {
-        return $this->center;
-    }
-
     /**
      * @return Collection|string[]
      */
