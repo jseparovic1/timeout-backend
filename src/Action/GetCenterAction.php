@@ -8,7 +8,6 @@ use App\Repository\CentersRepository;
 use App\Repository\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class GetCenterAction extends Controller
@@ -35,9 +34,7 @@ class GetCenterAction extends Controller
         ]);
 
         if ($center === null) {
-            throw new NotFoundHttpException(
-                sprintf('Center with id %s does not exists.')
-            );
+            throw CenterNotFound::forSlug($centerSlug);
         }
 
         $sports = $this->sportsRepository->findByCenter($center);

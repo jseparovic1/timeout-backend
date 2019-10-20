@@ -102,6 +102,12 @@
     "phpdocumentor/type-resolver": {
         "version": "1.0.1"
     },
+    "phpro/api-problem": {
+        "version": "v1.2.0"
+    },
+    "phpro/api-problem-bundle": {
+        "version": "v1.0.2"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
