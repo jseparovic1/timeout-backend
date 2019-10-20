@@ -6,6 +6,7 @@ use App\Entity\Address;
 use App\Entity\Center;
 use App\Entity\Coordinate;
 use App\Entity\Court;
+use App\Entity\Facility;
 use App\Entity\Sport;
 use App\Entity\WorkingHours;
 use App\Repository\CentersRepository;
@@ -57,6 +58,7 @@ class TimeoutInstall extends Command
 
         $center = new Center(
             'Sportski centar Lipotic',
+            'sportski-centar-lipotic',
             'Sportski centar Lipotic description',
             'pero@lipotic.com',
             '+385 91 897 2122',
@@ -68,8 +70,17 @@ class TimeoutInstall extends Command
                     '16.469226'
                 )
             ),
-            $this->getOpeningHours(),
-            'sportski-centar-lipotic'
+            $this->getOpeningHours()
+        );
+
+        $center->addFacilities(
+            [
+                new Facility('wifi', '/icons/facilities/wifi.svg'),
+                new Facility('tus', '/icons/facilities/shower.svg'),
+                new Facility('food', '/icons/facilities/food.svg'),
+                new Facility('parking', '/icons/facilities/parking.svg'),
+                new Facility('beer', '/icons/facilities/beer.svg'),
+            ]
         );
 
         $center->addCourt(
@@ -83,7 +94,7 @@ class TimeoutInstall extends Command
                     'https://fitnesscentarjoker.hr/wp-content/uploads/2017/05/cageball.jpg',
                     'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg',
                 ],
-                )
+            )
         );
 
         $center->addCourt(

@@ -25,5 +25,10 @@
                 <cascade-persist/>
             </cascade>
         </one-to-many>
+        <one-to-many field="facilities" target-entity="App\Entity\Facility" mapped-by="center">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
     </entity>
 </doctrine-mapping>

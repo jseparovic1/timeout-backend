@@ -37,9 +37,19 @@ class WorkingHours
         return $this->id;
     }
 
-    public function getDay(): int
+    public function getDay(): string
     {
-        return $this->day;
+        $days = [
+            'PON',
+            'UTO',
+            'SRI',
+            'ČET',
+            'PET',
+            'SUB',
+            'NED'
+        ];
+
+        return $days[$this->day-1];
     }
 
     public function getOpen(): string

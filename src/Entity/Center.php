@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -37,18 +36,22 @@ class Center
     /** @var WorkingHours[]|Collection */
     private $workingHours;
 
+    /** @var Facility[]|Collection */
+    private $facilities;
+
     /**
-     * @param Sport[] $sports
+     * @param Facility[] $facilities
      * @param WorkingHours[] $workingHours
      */
     public function __construct(
         string $name,
+        string $slug,
         string $description,
         string $email,
         string $phone,
         Address $address,
-        array $workingHours,
-        ?string $slug = null
+        array $workingHours = [],
+        array $facilities = []
     ) {
         $this->name = $name;
         $this->description = $description;
@@ -62,9 +65,11 @@ class Center
             return $workingHours;
         });
 
-        if ($slug === null) {
-            $slug = (new Slugify())->slugify($name);
-        }
+        $this->facilities = (new ArrayCollection($facilities))->map(function (Facility $facility) {
+            $facility->associateToCenter($this);
+
+            return $facility;
+        });
 
         $this->slug = $slug;
         $this->courts = new ArrayCollection();
@@ -130,6 +135,26 @@ class Center
     public function getWorkingHours(): array
     {
         return $this->workingHours->toArray();
+    }
+
+    /**
+     * @param Facility[] $facilities
+     */
+    public function addFacilities(array $facilities): void
+    {
+        foreach ($facilities as $facility) {
+            $facility->associateToCenter($this);
+
+            $this->facilities->add($facility);
+        }
+    }
+
+    /**
+     * @return Facility[]
+     */
+    public function getFacilities(): array
+    {
+        return $this->facilities->toArray();
     }
 
     public function getCover(): string
