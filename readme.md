@@ -1,6 +1,7 @@
+## Setup
 ```bash
 docker-compose up -d
 
-php bin/console doctrine:schema:create --force
-php bin/console timeout:install
+docker-compose exec php bin/console do:sc:up --force
+docker-compose exec php bin/console timeout:install
 ```
