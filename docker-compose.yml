@@ -9,9 +9,9 @@ services:
     networks:
       - timeout
     ports:
-      - "8000:80"
+      - "7000:80"
     volumes:
-      - .:/app:cached
+      - .:/app:delegated
       - ./docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini
     environment:
       PHP_IDE_CONFIG: "serverName=Docker"

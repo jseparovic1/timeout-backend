@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Action;
 
+use App\Exception\CenterNotFound;
 use App\Repository\CentersRepository;
 use App\Repository\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as Controller;
@@ -39,10 +40,6 @@ class GetCenterAction extends Controller
 
         $sports = $this->sportsRepository->findByCenter($center);
 
-        return $this->json([
-                'center' => $center,
-                'sports' => $sports
-            ]
-        );
+        return $this->json(new CenterResponse($center, $sports));
     }
 }

@@ -6,7 +6,7 @@
         <id name="id" type="integer">
             <generator/>
         </id>
-        <field name="name"/>
+        <field name="name" />
         <field name="slug" unique="true"/>
         <field name="description"/>
         <field name="phone"/>

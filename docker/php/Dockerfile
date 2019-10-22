@@ -1,4 +1,4 @@
-FROM php:7.3-cli
+FROM php:7.3.6-cli
 
 RUN echo "Europe/Zagreb" > /etc/timezone; dpkg-reconfigure tzdata
 

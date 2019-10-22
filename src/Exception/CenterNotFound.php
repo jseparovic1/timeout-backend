@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Action;
+namespace App\Exception;
 
 use Phpro\ApiProblem\Exception\ApiProblemException;
 use Phpro\ApiProblem\Http\NotFoundProblem;
