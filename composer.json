@@ -52,12 +52,8 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
-        "post-install-cmd": [
-            "@auto-scripts"
-        ],
-        "post-update-cmd": [
-            "@auto-scripts"
-        ],
+        "post-install-cmd": [],
+        "post-update-cmd": [],
         "serve": "php -S 0.0.0.0:80 -t public/"
     },
     "conflict": {
