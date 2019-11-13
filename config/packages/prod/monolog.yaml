@@ -6,7 +6,7 @@ monolog:
             handler: nested
             excluded_http_codes: [404, 405]
         nested:
-            type: stream
+            type: error_log
             path: "%kernel.logs_dir%/%kernel.environment%.log"
             level: debug
         console:
