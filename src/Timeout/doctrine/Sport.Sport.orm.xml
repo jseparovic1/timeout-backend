@@ -7,6 +7,6 @@
         <field name="name"/>
         <field name="icon"/>
         <field name="slug" unique="true"/>
-        <one-to-many field="courts" target-entity="App\Entity\Court" mapped-by="sport"/>
+        <one-to-many field="courts" target-entity="App\Timeout\Center\Court" mapped-by="sport"/>
     </entity>
 </doctrine-mapping>

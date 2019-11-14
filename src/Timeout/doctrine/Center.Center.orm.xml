@@ -11,8 +11,8 @@
         <field name="description"/>
         <field name="phone"/>
         <field name="email"/>
-        <embedded name="address" class="App\Entity\Address"/>
-        <one-to-many field="courts" target-entity="App\Entity\Court" mapped-by="center" orphan-removal="true">
+        <embedded name="address" class="App\Timeout\Center\Address"/>
+        <one-to-many field="courts" target-entity="App\Timeout\Center\Court" mapped-by="center" orphan-removal="true">
             <cascade>
                 <cascade-persist/>
             </cascade>
@@ -20,12 +20,12 @@
                 <order-by-field name="name"/>
             </order-by>
         </one-to-many>
-        <one-to-many field="workingHours" target-entity="App\Entity\WorkingHours" mapped-by="center">
+        <one-to-many field="workingHours" target-entity="App\Timeout\Center\WorkingHours" mapped-by="center">
             <cascade>
                 <cascade-persist/>
             </cascade>
         </one-to-many>
-        <one-to-many field="facilities" target-entity="App\Entity\Facility" mapped-by="center">
+        <one-to-many field="facilities" target-entity="App\Timeout\Center\Facility" mapped-by="center">
             <cascade>
                 <cascade-persist/>
             </cascade>
