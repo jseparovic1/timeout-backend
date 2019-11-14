@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Action;
 
-use App\Exception\CenterNotFound;
+use App\Timeout\Center\CenterNotFound;
 use App\Timeout\Center\CentersRepository;
 use App\Timeout\Sport\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as Controller;
