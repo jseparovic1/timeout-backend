@@ -13,9 +13,8 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         mappings:
-            App:
+            Timeout:
                 is_bundle: false
                 type: xml
-                dir: '%kernel.project_dir%/src/Mapping'
-                prefix: 'App\Entity'
-                alias: App
+                dir: '%kernel.project_dir%/src/Timeout/doctrine'
+                prefix: App\Timeout
