@@ -9,7 +9,7 @@ use App\Timeout\Center\Center;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Sport|null find(string $id)
+ * @method Sport|null find(int $id)
  * @method Sport|null findOneBy(array $criteria)
  * @method Sport[] findAll()
  */

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Action;
+namespace App\Api\Center;
 
 use App\Timeout\Center\Address;
 use App\Timeout\Center\Center;
