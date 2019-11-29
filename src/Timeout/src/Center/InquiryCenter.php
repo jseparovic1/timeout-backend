@@ -6,7 +6,7 @@ namespace App\Timeout\Center;
 
 use App\Timeout\Sport\Sport;
 
-class ContactManager
+class InquiryCenter
 {
     /** @var InquiriesRepository */
     private $inquiriesRepository;
@@ -16,7 +16,7 @@ class ContactManager
         $this->inquiriesRepository = $inquiriesRepository;
     }
 
-    public function submitInquiry(InquirySender $sender, string $message, Center $center, Sport $sport): Inquiry
+    public function submit(InquirySender $sender, string $message, Center $center, Sport $sport): Inquiry
     {
        $inquiry = new Inquiry(
            $sender,

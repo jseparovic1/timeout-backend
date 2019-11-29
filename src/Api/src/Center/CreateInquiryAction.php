@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Api\Center;
 
 use App\Timeout\Center\Center;
-use App\Timeout\Center\ContactManager;
+use App\Timeout\Center\InquiryCenter;
 use App\Timeout\Sport\SportNotFound;
 use App\Timeout\Sport\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,13 +17,13 @@ class CreateInquiryAction extends AbstractController
     /** @var SportsRepository */
     private $sportsRepository;
 
-    /** @var ContactManager */
-    private $manager;
+    /** @var InquiryCenter */
+    private $inquiry;
 
-    public function __construct(SportsRepository $sportsRepository, ContactManager $manager)
+    public function __construct(SportsRepository $sportsRepository, InquiryCenter $inquiry)
     {
         $this->sportsRepository = $sportsRepository;
-        $this->manager = $manager;
+        $this->inquiry = $inquiry;
     }
 
     /**
@@ -37,7 +37,7 @@ class CreateInquiryAction extends AbstractController
             throw SportNotFound::for($inquiryRequest->getSport());
         }
 
-        $inquiry = $this->manager->submitInquiry(
+        $inquiry = $this->inquiry->submit(
             $inquiryRequest->getContact(),
             $inquiryRequest->getMessage(),
             $center,
