@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\Center;
 
-use App\Shared\Exception\NotFoundException;
 use App\Timeout\Center\Center;
 use App\Timeout\Center\ContactManager;
-use App\Timeout\Center\Inquiry;
-use App\Timeout\Sport\Sport;
 use App\Timeout\Sport\SportNotFound;
 use App\Timeout\Sport\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,13 +37,21 @@ class CreateInquiryAction extends AbstractController
             throw SportNotFound::for($inquiryRequest->getSport());
         }
 
-        $this->manager->submitInquiry(
+        $inquiry = $this->manager->submitInquiry(
             $inquiryRequest->getContact(),
             $inquiryRequest->getMessage(),
             $center,
             $sport,
         );
 
-        return $this->json(null, Response::HTTP_CREATED);
+        return $this->json(
+            [
+                'id' => $inquiry->getId(),
+                'sender' => $inquiry->getSender(),
+                'message' => $inquiry->getMessage(),
+                'sport' => $inquiry->getSport(),
+            ],
+            Response::HTTP_CREATED
+        );
     }
 }

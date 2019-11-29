@@ -10,7 +10,7 @@
         <field name="description"/>
         <field name="gallery" type="array"/>
         <field name="price"/>
-        <many-to-one field="sport" target-entity="App\Timeout\Sport\Sport"/>
-        <many-to-one field="center" target-entity="App\Timeout\Center\Center" inversed-by="center"/>
+        <many-to-one field="sport" target-entity="App\Timeout\Sport\Sport" inversed-by="courts"/>
+        <many-to-one field="center" target-entity="App\Timeout\Center\Center" inversed-by="courts"/>
     </entity>
 </doctrine-mapping>

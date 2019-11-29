@@ -2,12 +2,12 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                    https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
-    <entity name="App\Timeout\Center\Facility">
+    <entity name="App\Timeout\Center\Facility" table="facilities">
         <id name="id" type="integer">
             <generator/>
         </id>
         <field name="name"/>
         <field name="icon"/>
-        <many-to-one field="center" target-entity="App\Timeout\Center\Center"/>
+        <many-to-one field="center" target-entity="App\Timeout\Center\Center" inversed-by="facilities"/>
     </entity>
 </doctrine-mapping>

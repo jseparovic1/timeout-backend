@@ -16,7 +16,7 @@ class ContactManager
         $this->inquiriesRepository = $inquiriesRepository;
     }
 
-    public function submitInquiry(Contact $sender, string $message, Center $center, Sport $sport)
+    public function submitInquiry(InquirySender $sender, string $message, Center $center, Sport $sport): Inquiry
     {
        $inquiry = new Inquiry(
            $sender,
@@ -28,5 +28,7 @@ class ContactManager
        //@TODO Send inquiry to someone ... ??
 
        $this->inquiriesRepository->save($inquiry);
+
+       return $inquiry;
     }
 }

@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Api\Center;
 
 use App\Shared\RequestGuard\RequestGuard;
-use App\Timeout\Center\Contact;
+use App\Timeout\Center\InquirySender;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class CreateCenterInquiryRequest extends RequestGuard
 {
-    /** @var Contact */
-    private $contact;
+    /** @var InquirySender */
+    private $sender;
 
     /** @var string */
     private $message;
@@ -20,11 +20,26 @@ class CreateCenterInquiryRequest extends RequestGuard
     /** @var int */
     private $sport;
 
-    public function __construct(Contact $contact, string $message, int $sport)
+    public function __construct(InquirySender $sender, string $message, int $sport)
     {
-        $this->contact = $contact;
+        $this->sender = $sender;
         $this->message = $message;
         $this->sport = $sport;
+    }
+
+    public function getContact(): InquirySender
+    {
+        return $this->sender;
+    }
+
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+
+    public function getSport(): int
+    {
+        return $this->sport;
     }
 
     /**
@@ -33,7 +48,7 @@ class CreateCenterInquiryRequest extends RequestGuard
     public static function getConstraints(): array
     {
         return [
-            'contact' => [
+            'sender' => [
                 new Assert\Collection([
                     'name' => [
                         new Assert\NotBlank(),
@@ -62,20 +77,5 @@ class CreateCenterInquiryRequest extends RequestGuard
                 new Assert\Type('integer')
             ]
         ];
-    }
-
-    public function getContact(): Contact
-    {
-        return $this->contact;
-    }
-
-    public function getMessage(): string
-    {
-        return $this->message;
-    }
-
-    public function getSport(): int
-    {
-        return $this->sport;
     }
 }

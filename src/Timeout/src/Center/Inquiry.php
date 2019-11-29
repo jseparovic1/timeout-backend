@@ -11,7 +11,7 @@ class Inquiry
     /** @var int */
     private $id;
 
-    /** @var Contact */
+    /** @var InquirySender */
     private $sender;
 
     /** @var string */
@@ -23,7 +23,7 @@ class Inquiry
     /** @var Sport */
     private $sport;
 
-    public function __construct(Contact $sender, string $message, Center $center, Sport $sport)
+    public function __construct(InquirySender $sender, string $message, Center $center, Sport $sport)
     {
         $this->sender = $sender;
         $this->message = $message;
@@ -36,7 +36,7 @@ class Inquiry
         return $this->id;
     }
 
-    public function getSender(): Contact
+    public function getSender(): InquirySender
     {
         return $this->sender;
     }
