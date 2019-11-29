@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Action;
+namespace App\Api\Center;
 
+use App\Timeout\Center\CenterNotFound;
 use App\Timeout\Center\CentersRepository;
 use App\Timeout\Sport\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ListCentersAction extends Controller
+class GetCenterAction extends Controller
 {
     /** @var CentersRepository */
     private $centersRepository;
@@ -26,12 +26,20 @@ class ListCentersAction extends Controller
     }
 
     /**
-     * @Route("/centers", name="api.centers.list", methods={"GET"})
+     * @Route("/centers/{centerSlug}", name="api.centers.get", methods={"GET"})
      */
-    public function __invoke(Request $request): Response
+    public function __invoke(string $centerSlug): Response
     {
-        return $this->json(
-            $this->centersRepository->findAll($request->query->get('sport'))
-        );
+        $center = $this->centersRepository->findOneBy([
+            'slug' => $centerSlug
+        ]);
+
+        if ($center === null) {
+            throw CenterNotFound::forSlug($centerSlug);
+        }
+
+        $sports = $this->sportsRepository->findByCenter($center);
+
+        return $this->json(new CenterResponse($center, $sports));
     }
 }
