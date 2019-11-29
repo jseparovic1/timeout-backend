@@ -1,5 +1,12 @@
-controllers:
-    resource: '../src/Api/src/Action/'
+center:
+    resource: '../src/Api/src/Center'
+    type: annotation
+    prefix: '/api'
+    requirements:
+        _format: 'json'
+
+sport:
+    resource: '../src/Api/src/Sport'
     type: annotation
     prefix: '/api'
     requirements:

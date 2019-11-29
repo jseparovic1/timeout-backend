@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Action;
+namespace App\Api\Sport;
 
 use App\Timeout\Sport\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as Controller;
@@ -24,8 +24,6 @@ class ListSportsAction extends Controller
      */
     public function __invoke(): Response
     {
-        return $this->json(
-            $this->sportRepository->findAll()
-        );
+        return $this->json($this->sportRepository->findAll());
     }
 }
