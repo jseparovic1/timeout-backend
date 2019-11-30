@@ -1,5 +1,5 @@
-controllers:
-    resource: '../src/Api/src/Action/'
+api_routes:
+    resource: '../src/App/Api/*'
     type: annotation
     prefix: '/api'
     requirements:

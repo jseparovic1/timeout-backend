@@ -31,16 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "App\\Api\\": "src/Api/src",
-            "App\\Shared\\": "src/Shared/",
-            "App\\Timeout\\": "src/Timeout/src"
+            "Timeout\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Api\\Tests\\": "tests/",
-            "App\\Timeout\\Tests\\": "src/Timeout/tests"
+            "TimeoutTest\\": "src/tests"
         }
     },
     "replace": {
