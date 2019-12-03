@@ -8,13 +8,13 @@
         </id>
         <field name="name" />
         <field name="slug" unique="true"/>
-        <field name="description"/>
+        <field name="description" type="text"/>
         <field name="phone"/>
         <field name="email"/>
         <embedded name="address" class="Timeout\Domain\Center\Address"/>
-        <one-to-many field="courts" target-entity="Timeout\Domain\Center\Court" mapped-by="center" orphan-removal="true">
+        <one-to-many field="courts" target-entity="Timeout\Domain\Center\Court" mapped-by="center">
             <cascade>
-                <cascade-persist/>
+                <cascade-all/>
             </cascade>
             <order-by>
                 <order-by-field name="name"/>
@@ -22,12 +22,12 @@
         </one-to-many>
         <one-to-many field="workingHours" target-entity="Timeout\Domain\Center\WorkingHours" mapped-by="center">
             <cascade>
-                <cascade-persist/>
+                <cascade-all/>
             </cascade>
         </one-to-many>
         <one-to-many field="facilities" target-entity="Timeout\Domain\Center\Facility" mapped-by="center">
             <cascade>
-                <cascade-persist/>
+                <cascade-all/>
             </cascade>
         </one-to-many>
     </entity>
