@@ -9,6 +9,11 @@
         <field name="day" type="integer"/>
         <field name="open" type="time"/>
         <field name="closed" type="time"/>
-        <many-to-one field="center" target-entity="Timeout\Domain\Center\Center" inversed-by="center"/>
+        <many-to-one field="center" target-entity="Timeout\Domain\Center\Center" inversed-by="center">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-column name="center_id" on-delete="CASCADE"/>
+        </many-to-one>
     </entity>
 </doctrine-mapping>

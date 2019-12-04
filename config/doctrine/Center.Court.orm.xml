@@ -10,7 +10,11 @@
         <field name="description"/>
         <field name="gallery" type="array"/>
         <field name="price"/>
-        <many-to-one field="sport" target-entity="Timeout\Domain\Sport\Sport"/>
-        <many-to-one field="center" target-entity="Timeout\Domain\Center\Center" inversed-by="center"/>
+        <many-to-one field="sport" target-entity="Timeout\Domain\Sport\Sport" inversed-by="courts">
+            <join-column name="sport_id" on-delete="SET NULL"/>
+        </many-to-one>
+        <many-to-one field="center" target-entity="Timeout\Domain\Center\Center" inversed-by="courts">
+            <join-column name="center_id" on-delete="CASCADE"/>
+        </many-to-one>
     </entity>
 </doctrine-mapping>
