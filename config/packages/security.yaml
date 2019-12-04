@@ -1,0 +1,31 @@
+security:
+    encoders:
+        Timeout\App\User\User:
+            algorithm: auto
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        timeout_user_provider:
+            entity:
+                class: Timeout\App\User\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            guard:
+                authenticators:
+                    - Timeout\App\Admin\AdminAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: app_login
+                
+                
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+    
+    access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/admin, roles: ROLE_ADMIN }

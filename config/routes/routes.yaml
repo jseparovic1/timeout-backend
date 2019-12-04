@@ -12,3 +12,7 @@ api_sport:
     prefix: '/api'
     requirements:
         _format: 'json'
+
+admin:
+    resource: '../src/App/Admin/*'
+    type: annotation
