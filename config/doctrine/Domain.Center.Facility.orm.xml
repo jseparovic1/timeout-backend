@@ -8,7 +8,7 @@
         </id>
         <field name="name"/>
         <field name="icon"/>
-        <many-to-one field="center" target-entity="Timeout\Domain\Center\Center">
+        <many-to-one field="center" target-entity="Timeout\Domain\Center\Center" inversed-by="facilities">
             <cascade>
                 <cascade-all/>
             </cascade>

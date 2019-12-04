@@ -1,5 +1,13 @@
-api_routes:
-    resource: '../src/App/Api/*'
+api_center:
+    resource: '../src/App/Center/*'
+    type: annotation
+    prefix: '/api'
+    requirements:
+        _format: 'json'
+    
+
+api_sport:
+    resource: '../src/App/Sport/*'
     type: annotation
     prefix: '/api'
     requirements:

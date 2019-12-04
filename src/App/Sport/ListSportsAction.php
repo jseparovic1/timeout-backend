@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Timeout\App\Api;
+namespace Timeout\App\Sport;
 
 use Timeout\Domain\Sport\SportsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as Controller;

@@ -16,4 +16,4 @@ doctrine:
                 is_bundle: false
                 type: xml
                 dir: '%kernel.project_dir%/config/doctrine'
-                prefix: Timeout\Domain
+                prefix: Timeout

@@ -24,6 +24,11 @@ class Facility
         $this->icon = $icon;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
     public function getName(): string
     {
         return $this->name;
@@ -34,8 +39,13 @@ class Facility
         return $this->icon;
     }
 
-    public function associateToCenter(Center $center): void
+    public function getCenter(): Center
     {
-        $this->center = $center;
+        return $this->center;
+    }
+
+    public function associateToCenter(): void
+    {
+        $this->center->addFacilities([$this]);
     }
 }
