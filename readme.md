@@ -1,7 +1,7 @@
 ## Setup
 ```bash
 docker-compose up -d
-docker-compose exec composer timeout:install
+docker-compose exec php composer timeout:install
 ```
 - Backend API: localhost:7000  
 - Database: localhost:4306

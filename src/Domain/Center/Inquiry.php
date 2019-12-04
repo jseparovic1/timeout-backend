@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Timeout\Domain\Center;
 
-
 use Timeout\Domain\Sport\Sport;
 
 class Inquiry

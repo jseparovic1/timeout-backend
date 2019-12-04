@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Timeout\App\Api;
+namespace Timeout\App\Center;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints as Assert;

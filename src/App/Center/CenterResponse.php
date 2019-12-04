@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Timeout\App\Api;
+namespace Timeout\App\Center;
 
 use Timeout\Domain\Center\Address;
 use Timeout\Domain\Center\Center;
