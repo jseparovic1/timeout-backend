@@ -5,19 +5,12 @@ version: 2
 
 # optional Composer settings
 composer:
-    # Per default dist is preferred
     prefer-source: false
-    
-    # Resolves to the --no-dev parameter
-    no-dev: false
-    
-    # Resolves to the --no-plugins parameter
+    no-dev: true
     no-plugins: false
-    
-    # Resolves to the --no-scripts parameter
-    no-scripts: false
+    no-scripts: true
+    optimize-autoloader: true
 
-# called after Composer runs
 post: bin/post-deploy.php
 
 # list of sustained folders in ~/htdocs. If not given, then it defaults to the "vendor" folder
