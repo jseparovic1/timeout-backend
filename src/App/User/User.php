@@ -33,6 +33,11 @@ class User implements UserInterface
         return $this->id;
     }
 
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
     /**
      * A visual identifier that represents this user.
      */

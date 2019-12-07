@@ -11,6 +11,7 @@
         <field name="description" type="text"/>
         <field name="phone"/>
         <field name="email"/>
+        <field name="createdAt" type="datetime_immutable"/>
         <embedded name="address" class="Timeout\Domain\Center\Address"/>
         <one-to-many field="courts" target-entity="Timeout\Domain\Center\Court" mapped-by="center">
             <cascade>

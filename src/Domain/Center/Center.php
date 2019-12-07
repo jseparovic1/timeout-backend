@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Timeout\Domain\Center;
 
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -24,7 +25,7 @@ class Center
     /** @var string */
     private $email;
 
-    /** @var string */
+    /** @var string|null */
     private $phone;
 
     /** @var Address */
@@ -39,6 +40,9 @@ class Center
     /** @var Facility[]|Collection */
     private $facilities;
 
+    /** @var DateTimeImmutable */
+    private $createdAt;
+
     /**
      * @param Facility[] $facilities
      * @param WorkingHours[] $workingHours
@@ -48,31 +52,25 @@ class Center
         string $slug,
         string $description,
         string $email,
-        string $phone,
+        ?string $phone,
         Address $address,
         array $workingHours = [],
         array $facilities = []
     ) {
         $this->name = $name;
+        $this->slug = $slug;
         $this->description = $description;
-        $this->phone = $phone;
         $this->email = $email;
+        $this->phone = $phone;
         $this->address = $address;
 
-        $this->workingHours = (new ArrayCollection($workingHours))->map(function (WorkingHours $workingHours) {
-            $workingHours->associateToCenter($this);
-
-            return $workingHours;
-        });
-
-        $this->facilities = (new ArrayCollection($facilities))->map(function (Facility $facility) {
-            $facility->associateToCenter($this);
-
-            return $facility;
-        });
-
-        $this->slug = $slug;
+        $this->workingHours = new ArrayCollection();
+        $this->facilities = new ArrayCollection();
         $this->courts = new ArrayCollection();
+        $this->createdAt = new DateTimeImmutable();
+
+        $this->addFacilities($facilities);
+        $this->addWorkingHours($workingHours);
     }
 
     public function getId(): int
@@ -100,7 +98,7 @@ class Center
         return $this->email;
     }
 
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
@@ -138,6 +136,24 @@ class Center
     }
 
     /**
+     * @return Facility[]
+     */
+    public function getFacilities(): array
+    {
+        return $this->facilities->toArray();
+    }
+
+    public function getCover(): string
+    {
+        return 'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg';
+    }
+
+    public function getCreatedAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    /**
      * @param Facility[] $facilities
      */
     public function addFacilities(array $facilities): void
@@ -150,15 +166,15 @@ class Center
     }
 
     /**
-     * @return Facility[]
+     * @param WorkingHours[] $workingHours
      */
-    public function getFacilities(): array
+    private function addWorkingHours(array $workingHours)
     {
-        return $this->facilities->toArray();
+        foreach ($workingHours as $workingHour) {
+            $workingHour->associateToCenter($this);
+
+            $this->workingHours->add($workingHour);
+        }
     }
 
-    public function getCover(): string
-    {
-        return 'https://www.glaspodravine.hr/wp-content/uploads/2019/01/1Q7A2279-750x500.jpg';
-    }
 }

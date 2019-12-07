@@ -1,0 +1,44 @@
+easy_admin:
+    site_name: 'Timeout.hr'
+    design:
+        brand_color: 'rgba(34, 96, 212)'
+    formats:
+        date: 'd.m.Y'
+        time: 'H:i'
+        datetime: 'd.m.Y H:i:s'
+    user:
+        display_avatar: false
+    
+    entities:
+        Center:
+            class: Timeout\Domain\Center\Center
+            search:
+                fields: ['id', 'name', 'email', 'slug', 'facilities']
+            form:
+                fields:
+                    - 'name'
+                    - 'slug'
+                    - 'description'
+                    - { property: 'email', type: 'email', label: 'Email' }
+                    - { property: 'phone', type: 'tel' }
+                    - 'address'
+                    - 'workingHours'
+                    - 'courts'
+                new:
+                edit:
+            list:
+                fields:
+                    - 'id'
+                    - 'name'
+                    - 'slug'
+                    - { property: 'email', type: 'email'}
+                    - { property: 'phone', type: 'tel' }
+                    - { property: 'courts', type: 'association'}
+                    - { property: 'createdAt', type: 'date' }
+                filters: ['name', 'slug']
+        Court:
+            class: Timeout\Domain\Center\Court
+            label: 'timeout.admin.courts'
+        User:
+            class: Timeout\App\User\User
+            label: 'timeout.admin.users'
