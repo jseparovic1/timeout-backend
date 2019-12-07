@@ -11,7 +11,7 @@ use Timeout\Domain\Center\Court;
 use Timeout\Domain\Center\Facility;
 use Timeout\Domain\Center\WorkingHours;
 
-class CreateCenterFormRequest
+class CenterFormRequest
 {
     /** @var int */
     private $id;
