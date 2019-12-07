@@ -2,6 +2,15 @@ easy_admin:
     site_name: 'Timeout.hr'
     design:
         brand_color: 'rgba(34, 96, 212)'
+        menu:
+            - { label: 'Timeout'}
+            - { entity: 'Centar', icon: 'building' }
+            - { entity: 'Teren', icon: 'database' }
+            - { entity: 'Sport', icon: 'futbol' }
+            
+            - { label: 'Settings' }
+            - { entity: 'Korisnik', icon: 'user'}
+            - { label: 'Timeout', url: 'https://timeout.hr', rel: 'noreferrer', icon: 'globe-africa'}
     formats:
         date: 'd.m.Y'
         time: 'H:i'
@@ -10,19 +19,23 @@ easy_admin:
         display_avatar: false
     
     entities:
-        Center:
+        Centar:
             class: Timeout\Domain\Center\Center
             search:
                 fields: ['id', 'name', 'email', 'slug', 'facilities']
             form:
                 fields:
+                    - { type: 'section', label: 'General'}
                     - 'name'
                     - 'slug'
-                    - 'description'
+                    - { property: 'description', type: 'text_editor' }
+                    - { type: 'section', label: 'Contact'}
                     - { property: 'email', type: 'email', label: 'Email' }
                     - { property: 'phone', type: 'tel' }
                     - 'address'
+                    - { type: 'section', label: 'Working hours'}
                     - 'workingHours'
+                    - { type: 'section', label: 'Courts'}
                     - 'courts'
                 new:
                 edit:
@@ -36,9 +49,9 @@ easy_admin:
                     - { property: 'courts', type: 'association'}
                     - { property: 'createdAt', type: 'date' }
                 filters: ['name', 'slug']
-        Court:
+        Teren:
             class: Timeout\Domain\Center\Court
-            label: 'timeout.admin.courts'
-        User:
+        Sport:
+            class: Timeout\Domain\Sport\Sport
+        Korisnik:
             class: Timeout\App\User\User
-            label: 'timeout.admin.users'
