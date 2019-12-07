@@ -5,7 +5,7 @@ declare(strict_types=1);
 chdir(dirname(__DIR__));
 
 //system('touch .env');
-//system('composer dump-env prod');
+system('composer dump-env prod');
 system('export APP_ENV=prod');
 system('composer update');
 system('php bin/console cache:clear');
