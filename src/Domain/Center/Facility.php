@@ -44,8 +44,8 @@ class Facility
         return $this->center;
     }
 
-    public function associateToCenter(): void
+    public function associateToCenter(Center $center): void
     {
-        $this->center->addFacilities([$this]);
+        $this->center = $center;
     }
 }

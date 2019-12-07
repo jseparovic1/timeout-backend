@@ -25,9 +25,13 @@ class CreateLogInAction extends AbstractController
         $error = $this->authentication->getLastAuthenticationError();
         $lastUsername = $this->authentication->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
+        return $this->render('@EasyAdmin/page/login.html.twig', [
+            'error' => $error,
             'last_username' => $lastUsername,
-            'error' => $error
+            'csrf_token_intention' => 'authenticate',
+            'username_label' => 'Vaša email adresa',
+            'password_label' => 'Lozinka',
+            'sign_in_label' => 'Prijava',
         ]);
     }
 }
