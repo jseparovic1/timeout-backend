@@ -6,6 +6,7 @@ chdir(dirname(__DIR__));
 
 system('touch .env');
 system('composer dump-env prod');
+system('php bin/console assets:install');
 system('php bin/console cache:clear');
 system('php bin/console doctrine:database:create --if-not-exists');
 system('php bin/console doctrine:schema:update --force');
