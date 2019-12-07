@@ -5,10 +5,7 @@ version: 2
 
 # optional Composer settings
 composer:
-    prefer-source: false
     no-dev: true
-    no-plugins: false
-    no-scripts: true
     optimize-autoloader: true
 
 post: bin/post-deploy.php
