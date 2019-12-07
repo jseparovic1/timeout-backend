@@ -39,11 +39,6 @@ class Facility
         return $this->icon;
     }
 
-    public function getCenter(): Center
-    {
-        return $this->center;
-    }
-
     public function associateToCenter(Center $center): void
     {
         $this->center = $center;
