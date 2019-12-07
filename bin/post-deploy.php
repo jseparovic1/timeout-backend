@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 chdir(dirname(__DIR__));
 
-//system('touch .env');
-echo 'Dumping env variables.' . PHP_EOL;
-system('composer dump-env prod');
-
-echo 'Export prod.' . PHP_EOL;
-system('export APP_ENV=prod');
+echo 'Dirty hack to support native .env variables.' . PHP_EOL;
+system('echo "<?php return [];" > .env.local.php');
 
 echo 'Clear cache.' . PHP_EOL;
 system('php bin/console cache:clear');
