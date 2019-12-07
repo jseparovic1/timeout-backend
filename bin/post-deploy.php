@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 chdir(dirname(__DIR__));
 
-system('touch .env');
+//system('touch .env');
 system('composer dump-env prod');
 system('php bin/console cache:clear --env=prod --no-debug');
 system('php bin/console assets:install');
