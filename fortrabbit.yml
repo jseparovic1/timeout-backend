@@ -14,5 +14,5 @@ composer:
 post: bin/post-deploy.php
 
 # list of sustained folders in ~/htdocs. If not given, then it defaults to the "vendor" folder
-#sustained:
-#    - vendor
+sustained:
+    - vendor
