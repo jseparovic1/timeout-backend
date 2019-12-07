@@ -14,6 +14,7 @@ echo 'Assets install.' . PHP_EOL;
 system('php bin/console assets:install');
 
 echo 'Configuring database.' . PHP_EOL;
+system('php bin/console doctrine:database:drop --force --no-interaction --if-exists');
 system('php bin/console doctrine:database:create --if-not-exists');
 system('php bin/console doctrine:schema:update --force');
-system('php bin/console doctrine:fixtures:load -n');
+system('php bin/console doctrine:fixtures:load --no-interaction');
