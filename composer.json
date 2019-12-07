@@ -64,7 +64,6 @@
         "post-update-cmd": [],
         "serve": "php -S 0.0.0.0:80 -t public/",
         "timeout:install": [
-            "bin/console doctrine:database:drop --force",
             "bin/console doctrine:database:create --if-not-exists",
             "bin/console doctrine:schema:update --force",
             "bin/console doctrine:fixtures:load -n"
