@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "cocur/slugify": "^3.2",
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "easycorp/easyadmin-bundle": "^2.3",
         "egulias/email-validator": "^2.1",
         "phpro/api-problem": "^1.2",
@@ -22,8 +23,7 @@
         "symfony/serializer-pack": "^1.0",
         "symfony/twig-pack": "^1.0",
         "symfony/validator": "4.3.*",
-        "symfony/yaml": "4.3.*",
-        "doctrine/doctrine-fixtures-bundle": "^3.3"
+        "symfony/yaml": "4.3.*"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9",
