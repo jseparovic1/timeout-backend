@@ -6,7 +6,7 @@ namespace Timeout\App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Timeout\Domain\Sport\Sport;
 
 class SportFixtures extends Fixture

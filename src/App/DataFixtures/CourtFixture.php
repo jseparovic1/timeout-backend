@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Timeout\App\DataFixtures;
 
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Timeout\Domain\Center\Court;
 use Timeout\Domain\Sport\Sport;
 use Timeout\Framework\DataFixtures\FakerFixture;
