@@ -4,7 +4,7 @@
     "name": "timeout/core",
     "description": "Timeout",
     "require": {
-        "php": "^7.3",
+        "php": "^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
