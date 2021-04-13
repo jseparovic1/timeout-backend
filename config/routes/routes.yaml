@@ -4,7 +4,7 @@ api_center:
     prefix: '/api'
     requirements:
         _format: 'json'
-    
+
 
 api_sport:
     resource: '../src/App/Sport/*'
