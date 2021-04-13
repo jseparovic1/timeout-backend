@@ -9,9 +9,9 @@ use Phpro\ApiProblem\Http\HttpApiProblem;
 
 class UnprocessableEntityException extends ApiProblemException
 {
-    public static function create(string $message, array $additional = []): UnprocessableEntityException
+    public static function create(string $message, array $additional = []): ApiProblemException
     {
-        return new static(
+        return new ApiProblemException(
             new HttpApiProblem(422,
                 array_merge(
                     [
