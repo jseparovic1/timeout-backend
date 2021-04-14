@@ -9,9 +9,9 @@ use Phpro\ApiProblem\Http\HttpApiProblem;
 
 class RuntimeException extends ApiProblemException
 {
-    public static function create(string $message, array $additional = []): RuntimeException
+    public static function create(string $message, array $additional = []): ApiProblemException
     {
-        return new static(
+        return new ApiProblemException(
             new HttpApiProblem(500,
                 array_merge(
                     [

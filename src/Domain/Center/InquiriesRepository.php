@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Timeout\Domain\Center;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Timeout\Framework\Repository;
 
 /**

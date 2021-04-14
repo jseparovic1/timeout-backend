@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Timeout\App\User;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Timeout\Framework\Repository;
 
 class UserRepository extends Repository

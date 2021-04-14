@@ -1,18 +1,13 @@
 api_center:
-    resource: '../src/App/Center/*'
+    resource: '../../src/App/Center/'
     type: annotation
     prefix: '/api'
     requirements:
         _format: 'json'
-    
 
 api_sport:
-    resource: '../src/App/Sport/*'
+    resource: '../../src/App/Sport/'
     type: annotation
     prefix: '/api'
     requirements:
         _format: 'json'
-
-admin:
-    resource: '../src/App/Admin/*'
-    type: annotation

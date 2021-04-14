@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Timeout\Domain\Sport;
 
+use Doctrine\Persistence\ManagerRegistry;
 use Timeout\Domain\Center\Center;
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Timeout\Framework\Repository;
 
 /**

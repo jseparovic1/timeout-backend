@@ -4,7 +4,7 @@ namespace Timeout\App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Timeout\Domain\Center\Address;
 use Timeout\Domain\Center\Center;
 use Timeout\Domain\Center\Coordinate;

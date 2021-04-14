@@ -1,4 +1,4 @@
-FROM php:7.3.6-cli
+FROM php:8.0.3-cli
 
 RUN echo "Europe/Zagreb" > /etc/timezone; dpkg-reconfigure tzdata
 
@@ -6,22 +6,13 @@ RUN echo "Europe/Zagreb" > /etc/timezone; dpkg-reconfigure tzdata
 COPY docker/php/extensions.sh /usr/local/bin/
 RUN /usr/local/bin/extensions.sh
 
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN install-php-extensions intl zip xdebug^3
+
 # Use the default development PHP configuration
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
-RUN apt-get update && apt-get install -y \
-    openssl \
-    libcurl4-openssl-dev \
-    pkg-config \
-    libssl-dev
-
-# Install Xdebug
-RUN pecl install xdebug && \
-    docker-php-ext-enable xdebug
-
-# Install composer
-COPY docker/php/composer.sh /usr/local/bin/
-RUN /usr/local/bin/composer.sh
+COPY --from=composer:2.0.12 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
